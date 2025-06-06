@@ -1,0 +1,14 @@
+{
+  "width": 1920,
+  "height": 1920,
+  "slides": [
+    {
+      "title": "Welcome to Our Carousel",
+      "description": "This is an example slide with a clean design."
+    },
+    {
+      "title": "Another Slide",
+      "description": "You can customize colors, add images, and more!"
+    }
+  ]
+} 

@@ -14,11 +14,58 @@ const theme = {
   text: '#ffffff' // Adding white text for dark background
 };
 
-export function generateSlideHtml(slide: CarouselSlide, config: CarouselConfig): string {
+export function generateSlideHtml(slide: CarouselSlide, config: CarouselConfig, options?: { previewMode?: boolean }): string {
   const merriweatherPath = join(process.cwd(), 'src/fonts/MerriweatherSans-VariableFont_wght.ttf');
   const merriweatherItalicPath = join(process.cwd(), 'src/fonts/MerriweatherSans-Italic-VariableFont_wght.ttf');
   const bbtPath = join(process.cwd(), 'src/fonts/BigBlueTerm437NerdFont-Regular.ttf');
   
+  const content = `
+    <div class="content">
+      <h1>${slide.title}</h1>
+      ${slide.imageUrl ? `<img src="${slide.imageUrl}" alt="${slide.title}">` : ''}
+      <p>${slide.description}</p>
+    </div>
+  `;
+
+  if (options?.previewMode) {
+    return `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+${compiledCss}
+            body {
+              margin: 0;
+              padding: 2rem;
+              min-height: 100vh;
+              background: #e5e5e5;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              box-sizing: border-box;
+            }
+            #slide-container {
+              aspect-ratio: ${config.width} / ${config.height};
+              max-width: min(100%, ${config.width}px);
+              max-height: calc(100vh - 4rem);
+              background: var(--bg);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+          </style>
+        </head>
+        <body>
+          <div id="slide-container">
+            ${content}
+          </div>
+        </body>
+      </html>
+    `;
+  }
+
+  const bodyStyle = options?.previewMode
+    ? 'margin:0;overflow:hidden;background:#e5e5e5;position:relative;'
+    : 'margin:0;overflow:hidden;background:var(--bg);';
+
   return `
     <!DOCTYPE html>
     <html>
@@ -90,11 +137,9 @@ ${compiledCss}
           }
         </style>
       </head>
-      <body style="width: ${config.width}px; height: ${config.height}px;">
-        <div class="content">
-          <h1>${slide.title}</h1>
-          ${slide.imageUrl ? `<img src="${slide.imageUrl}" alt="${slide.title}">` : ''}
-          <p>${slide.description}</p>
+      <body style="${bodyStyle}">
+        <div id="slide-container" style="width: ${config.width}px; height: ${config.height}px; background: var(--bg);">
+          ${content}
         </div>
       </body>
     </html>

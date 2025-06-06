@@ -1,12 +1,13 @@
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'fs/promises';
 import { join, resolve } from 'path';
 import puppeteer from 'puppeteer';
 import { generateSlideHtml } from './template';
 import type { CarouselConfig } from './types';
 
 async function generateImages(config: CarouselConfig, outputDir: string = 'output') {
-  // Create output directory if it doesn't exist
+  // Clean output directory if it exists
   const absoluteOutputDir = resolve(process.cwd(), outputDir);
+  await rm(absoluteOutputDir, { recursive: true, force: true }).catch(() => {});
   await mkdir(absoluteOutputDir, { recursive: true });
 
   // Launch browser
@@ -45,25 +46,11 @@ async function generateImages(config: CarouselConfig, outputDir: string = 'outpu
   await browser.close();
 }
 
-// Example usage
-const exampleConfig: CarouselConfig = {
-  width: 1920,
-  height: 1920,
-  slides: [
-    {
-      title: "Welcome to Our Carousel",
-      description: "This is an example slide with a clean design.",
-      backgroundColor: undefined,
-      textColor: undefined
-    },
-    {
-      title: "Another Slide",
-      description: "You can customize colors, add images, and more!",
-      backgroundColor: undefined,
-      textColor: undefined
-    }
-  ]
-};
+async function main() {
+  const configPath = join(process.cwd(), 'src/slides.json');
+  const configData = await readFile(configPath, 'utf-8');
+  const config: CarouselConfig = JSON.parse(configData);
+  await generateImages(config);
+}
 
-// Generate the images
-generateImages(exampleConfig).catch(console.error); 
+main().catch(console.error); 
