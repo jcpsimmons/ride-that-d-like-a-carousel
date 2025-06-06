@@ -3,12 +3,28 @@
   "height": 1920,
   "slides": [
     {
-      "title": "Welcome to Our Carousel",
-      "description": "This is an example slide with a clean design."
+      "title": "The Ultimate Code Review Process",
+      "description": "A straightforward framework to stop bugs, up-skill your engineers, and dramatically boost communication and team productivity."
     },
     {
-      "title": "Another Slide",
-      "description": "You can customize colors, add images, and more!"
+      "title": "Stop Forcing Change. Start Planting Seeds.",
+      "description": "Top-down mandates create fear and rarely work. The secret? Introduce the process with a single, high-performing team. Let genuine curiosity and peer advocacy drive organic adoption across the org."
+    },
+    {
+      "title": "The Core Rules (Part 1)",
+      "description": "1. Review-Ready PRs: A PR must be reviewable the moment it is opened.\n2. No Monolithic PRs: Avoid excessively large pull requests.\n3. Clear & Concise Descriptions: Make it clear enough for a non-technical user to understand.\n4. Blocking Merges: The ONLY reason to block a PR is if it will unequivocally break the master branch."
+    },
+    {
+      "title": "The Core Rules (Part 2)",
+      "description": "5. Stylistic Nits: Subjective critiques should be prefixed with \"nit:\" and must not block approval.\n6. Approval Requirements: Small PRs require one approval. Anything larger requires two.\n7. Emergency Overrides: You may merge without review in a GENUINE emergency. If you're unsure, it is not one."
+    },
+    {
+      "title": "Automate and Measure for Scale",
+      "description": "Once the process proves its value, use the official GitHub x Slack integration to keep things on track. Monitor key metrics like PR 'alive' time (aim for <2 days) and comment volume to spot bottlenecks."
+    },
+    {
+      "title": "Your 3-Step Implementation Plan",
+      "description": "1. Pilot Program: Implement the 7 rules with one team.\n2. Incremental Rollout: Let it spread organically over 3-6 months as other teams ask for it.\n3. Metric-Driven Optimization: Use data to empower leaders and refine the process."
     }
   ]
-} 
+}

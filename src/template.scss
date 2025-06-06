@@ -1,19 +1,21 @@
 // Font-face declarations
 @font-face {
-  font-family: 'MerriweatherSans';
-  src: url('./fonts/MerriweatherSans-VariableFont_wght.ttf') format('truetype-variations');
+  font-family: "MerriweatherSans";
+  src: url("./fonts/MerriweatherSans-VariableFont_wght.ttf")
+    format("truetype-variations");
   font-weight: 300 800;
   font-style: normal;
 }
 @font-face {
-  font-family: 'MerriweatherSans';
-  src: url('./fonts/MerriweatherSans-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-family: "MerriweatherSans";
+  src: url("./fonts/MerriweatherSans-Italic-VariableFont_wght.ttf")
+    format("truetype-variations");
   font-weight: 300 800;
   font-style: italic;
 }
 @font-face {
-  font-family: 'BigBlueTerm437';
-  src: url('./fonts/BigBlueTerm437NerdFont-Regular.ttf') format('truetype');
+  font-family: "BigBlueTerm437";
+  src: url("./fonts/BigBlueTerm437NerdFont-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -33,32 +35,34 @@ body {
   height: 100vh;
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'MerriweatherSans', sans-serif;
+  font-family: "MerriweatherSans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .content {
   padding: 4rem;
-  max-width: 80%;
-  background-color: var(--bg-muted);
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'BigBlueTerm437', monospace;
-  font-size: 3.5rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "BigBlueTerm437", monospace;
+  font-size: 6rem;
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;
   color: var(--brand);
 }
 
 p {
-  font-family: 'MerriweatherSans', sans-serif;
+  font-family: "MerriweatherSans", sans-serif;
   font-size: 2rem;
   line-height: 1.6;
   font-weight: 300;
@@ -71,4 +75,10 @@ img {
   object-fit: contain;
   margin: 2rem 0;
   border-radius: 0.5rem;
-} 
+}
+
+.slide_0 {
+  h1 {
+    font-size: 10rem;
+  }
+}
