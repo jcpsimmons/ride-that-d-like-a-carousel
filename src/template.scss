@@ -1,4 +1,6 @@
 // Font-face declarations
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
 @font-face {
   font-family: "MerriweatherSans";
   src: url("./fonts/MerriweatherSans-VariableFont_wght.ttf")
@@ -14,8 +16,22 @@
   font-style: italic;
 }
 @font-face {
-  font-family: "BigBlueTerm437";
-  src: url("./fonts/BigBlueTerm437NerdFont-Regular.ttf") format("truetype");
+  font-family: "Inter";
+  src: url("./fonts/Inter-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Jersey15";
+  src: url("/fonts/Jersey15-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -26,13 +42,18 @@
   --bg: #1a0602;
   --bg-muted: #241a1a;
   --text: #ffffff;
+  --preview-bg: #303030;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+
+body {
   background-color: var(--bg);
   color: var(--text);
   font-family: "MerriweatherSans", sans-serif;
@@ -40,12 +61,68 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+#slide-container {
+  background: var(--bg);
+  position: relative;
 }
 
 .content {
-  padding: 4rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  .header {
+    padding-bottom: 4rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    background-color: var(--brand);
+    color: var(--bg);
+    border-bottom: 10px solid var(--brand);
+    text-align: left;
+    > * {
+      padding: 0 10rem;
+    }
+  }
+  .body {
+    margin-bottom: auto;
+    margin: auto 10rem;
+    margin-top: 5rem;
+    text-align: left;
+  }
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 80px;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .slide-number {
+    font-family: "Inter", sans-serif;
+    font-size: 4rem;
+    color: var(--brand);
+    font-weight: 100;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .wordmark {
+    font-family: "Jersey 15", sans-serif;
+    font-size: 12rem;
+    color: var(--brand);
+    margin-left: auto;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 h1,
@@ -54,18 +131,18 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "BigBlueTerm437", monospace;
-  font-size: 6rem;
+  font-family: "Inter", sans-serif;
+  font-size: 7rem;
   margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-  color: var(--brand);
+  letter-spacing: -0.02em;
+  font-weight: 900;
 }
 
 p {
-  font-family: "MerriweatherSans", sans-serif;
-  font-size: 2rem;
+  font-family: "Inter", sans-serif;
+  font-size: 5rem;
   line-height: 1.6;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -80,5 +157,21 @@ img {
 .slide_0 {
   h1 {
     font-size: 10rem;
+  }
+}
+
+// Preview mode styles
+body.preview-mode {
+  background: var(--preview-bg);
+  padding: 2rem;
+  min-height: 100vh;
+  min-width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+
+  #slide-container {
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      0 1.5px 8px rgba(0, 0, 0, 0.18);
   }
 }
